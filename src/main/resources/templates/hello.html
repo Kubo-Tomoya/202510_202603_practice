@@ -5,6 +5,10 @@
     <title>Hello</title>
 </head>
 <body>
-    <h1 th:text="${message}">デフォルトメッセージ</h1>
+    <h1>名前を入力してください</h1>
+    <form th:action="@{/hello}" th:object="${helloForm}" method="post">
+        <input type="text" th:field="*{name}" placeholder="名前を入力">
+        <button type="submit">送信</button>
+    </form>
 </body>
 </html>

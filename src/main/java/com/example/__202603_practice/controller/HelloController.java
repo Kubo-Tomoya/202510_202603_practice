@@ -3,13 +3,21 @@ package com.example.__202603_practice.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import com.example.__202603_practice.form.HelloForm;
 
 @Controller
 public class HelloController {
 
   @GetMapping("/")
-  public String hello(Model model) {
-    model.addAttribute("message", "Hello, Thymeleaf!");
+  public String index(Model model) {
+    model.addAttribute("helloForm", new HelloForm());
     return "hello";
+  }
+
+  @PostMapping("/hello")
+  public String hello(HelloForm helloForm, Model model) {
+    model.addAttribute("name", helloForm.getName());
+    return "result";
   }
 }
